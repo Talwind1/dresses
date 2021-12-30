@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
@@ -7,6 +6,7 @@ function App() {
   const show = () => {
     arr.forEach((i) => {
       i = i + 1;
+      console.log(i);
     });
   };
   return <div className="App">{show()}</div>;
