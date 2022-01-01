@@ -1,3 +1,8 @@
+@font-face {
+  font-family: futura-pt, sans-serif;
+  src: url("./font/futura\ light\ bt.ttf");
+}
+
 .App {
   text-align: center;
 }
@@ -18,4 +23,30 @@
   grid-column-gap: 0.5em;
   grid-row-gap: 1em;
   column-gap: 17px;
+}
+
+.price {
+  font-family: futura-pt, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.8px;
+  line-height: 20px;
+  color: #d01345;
+  white-space: nowrap;
+}
+
+.header {
+  height: 5vh;
+  background-color: black;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header a {
+  color: #fff;
+  /* margin: 10%; */
+  padding: 1%;
+  font-family: futura-pt sans-serif;
 }

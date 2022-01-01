@@ -28,7 +28,8 @@ function Dresses() {
           <h4>{dress.location}</h4>
           <img src={dress.image} alt="dress pic"></img>
           <h4>{dress.size}</h4>
-          <h4>{dress.color}</h4>
+          {/* <h4>{dress.color}</h4> */}
+          <span className="price">{dress.price}&#8362; </span>
         </div>
       );
     });
