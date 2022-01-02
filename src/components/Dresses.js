@@ -1,5 +1,6 @@
-import axios from "axios";
+// import axios from "axios";
 import { useState, useEffect } from "react";
+import dressesApi from "../api.js";
 
 function Dresses() {
   const [dresses, setDresses] = useState(null);
@@ -9,9 +10,7 @@ function Dresses() {
     setLoading(true);
     const fetching = async () => {
       try {
-        const { data } = await axios.get(
-          "https://61c311049cfb8f0017a3e937.mockapi.io/dresses"
-        );
+        const { data } = await dressesApi.get("dresses");
         setDresses(data);
         setLoading(false);
       } catch (e) {
@@ -25,11 +24,11 @@ function Dresses() {
     return dresses.map((dress) => {
       return (
         <div key={dress.id} className="dress">
-          <h4>{dress.location}</h4>
+          <p className="dress_description">
+            size {dress.size.toUpperCase()}, {dress.price}&#8362; from{" "}
+            {dress.location}
+          </p>
           <img src={dress.image} alt="dress pic"></img>
-          <h4>{dress.size}</h4>
-          {/* <h4>{dress.color}</h4> */}
-          <span className="price">{dress.price}&#8362; </span>
         </div>
       );
     });
