@@ -19,8 +19,9 @@
   padding: 0;
   border: 0;
 }
-* .App {
+.App {
   text-align: center;
+  position: relative;
 }
 
 .dress_description {
@@ -124,4 +125,21 @@
 }
 .dress-item {
   font-family: futura;
+}
+
+.Create {
+  position: absolute;
+  top: 200%;
+  right: 40%;
+  margin: auto;
+}
+
+.h1 {
+  background-color: transparent;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /* margin: auto; */
+  z-index: 1;
+  text-align: center;
 }
