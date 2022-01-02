@@ -87,11 +87,11 @@
 
 .header {
   height: 6vh;
-  background-color: black;
+  background-color: #333;
   color: #fff;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .header a {
@@ -104,9 +104,12 @@
 }
 
 .home {
-  background-image: url("https://i.ibb.co/SKhqzyY/dress.jpg") cover no-repeat;
+  background: url("https://i.ibb.co/SrK1Dd7/dress.jpg") center center/cover
+    no-repeat;
   opacity: 0.9;
   font-family: oswald, "arial narrow", sans-serif;
+  height: 100vh;
+  /* background-color: black; */
 }
 @media screen and (max-width: 1024px) {
   .dresses {
@@ -136,10 +139,10 @@
 
 .h1 {
   background-color: transparent;
-  position: absolute;
-  height: 100%;
-  width: 100%;
+  /* position: absolute; */
+  top: 45%;
+  left: 50%;
   /* margin: auto; */
-  z-index: 1;
+  /* z-index: 1; */
   text-align: center;
 }

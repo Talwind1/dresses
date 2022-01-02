@@ -3,8 +3,8 @@ import dresses from "../img/dress.jpg";
 function Home() {
   return (
     <div className="home">
-      <h1 className="h1">Borrow a dress</h1>
-      <img src={dresses} alt="" />
+      {/* <h1 className="h1">Borrow a dress</h1> */}
+      {/* <img src={dresses} alt="" /> */}
     </div>
   );
 }

@@ -56,7 +56,7 @@ function CrudElement({ clickFunc }) {
           />
         </li>
       </ul>
-      <button onClick={clickFunc}>Add item</button>
+      <button onClick={clickFunc}>Submit</button>
     </div>
   );
 }

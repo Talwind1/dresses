@@ -24,7 +24,11 @@ function MyItems() {
     },
   ]);
   const [show, setShow] = useState(false);
+  const [showAdd, setAddShow] = useState(false);
 
+  const addComp = () => {
+    setAddShow(!showAdd);
+  };
   const deleteDress = async (id) => {
     try {
       await dressesApi.delete(`dresses/${id}`);
@@ -49,6 +53,7 @@ function MyItems() {
             location={dress.location}
             price={dress.price}
             image={dress.image}
+            id={dress.id}
             deleteFunc={() => deleteDress(dress.id)}
           />
         </react.Fragment>
@@ -64,7 +69,6 @@ function MyItems() {
         color: item.color,
         image: item.image,
       };
-
       const { data } = await dressesApi.post("dresses", newDress);
 
       const items = [...myItems, data];
@@ -80,10 +84,12 @@ function MyItems() {
     } catch {}
   };
 
+  const updateItem = async () => {};
   return (
     <div className="myItems">
-      <h1>add a dress</h1>
-      <CrudElement clickFunc={createItem} />
+      <button onClick={addComp}>add a dress</button>
+      {showAdd && <CrudElement clickFunc={createItem} />}
+
       <>
         <button onClick={showItems}>Show Items</button>
         <>{show && mapItems()}</>
