@@ -28,7 +28,7 @@ function Dresses() {
             size {dress.size.toUpperCase()}, {dress.price}&#8362; from{" "}
             {dress.location}
           </p>
-          <img src={dress.image} alt="dress pic"></img>
+          <img src={dress.image} alt="dress pic" className="dress-pic"></img>
         </div>
       );
     });

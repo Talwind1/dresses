@@ -46,7 +46,7 @@
   visibility: visible;
   opacity: 1;
 }
-.dress img {
+.dress-pic {
   width: 100%;
   height: auto;
   display: block;
@@ -105,6 +105,7 @@
 .home {
   background-image: url("https://i.ibb.co/SKhqzyY/dress.jpg") cover no-repeat;
   opacity: 0.9;
+  font-family: oswald, "arial narrow", sans-serif;
 }
 @media screen and (max-width: 1024px) {
   .dresses {
@@ -120,4 +121,7 @@
   .dresses {
     column-count: 1;
   }
+}
+.dress-item {
+  font-family: futura;
 }

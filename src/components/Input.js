@@ -1,4 +1,4 @@
-function Input({ type, handleChange, objVal }) {
+function Input({ type, handleChange, value, inputRef }) {
   return (
     <input
       className="input"
@@ -6,8 +6,9 @@ function Input({ type, handleChange, objVal }) {
       onChange={handleChange}
       name={type}
       placeholder={type}
-      //  value={objVal}
+      value={value}
       id={type}
+      ref={inputRef}
     />
   );
 }
