@@ -25,8 +25,9 @@ function Dresses() {
       return (
         <div key={dress.id} className="dress">
           <p className="dress_description">
-            size {dress.size.toUpperCase()}, {dress.price}&#8362; from{" "}
-            {dress.location}
+            <h2> size {dress.size.toUpperCase()}</h2>
+            <h2>{dress.price}&#8362;</h2>
+            <h2>{dress.location}</h2>
           </p>
           <img src={dress.image} alt="dress pic" className="dress-pic"></img>
         </div>

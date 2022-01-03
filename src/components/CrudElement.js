@@ -18,7 +18,7 @@ function CrudElement({ clickFunc }) {
   };
 
   return (
-    <div className="Create">
+    <div className="CrudElement">
       <ul style={{ listStyle: "none" }}>
         <li>
           <Input

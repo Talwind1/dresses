@@ -14,6 +14,7 @@
   font-family: futura-x;
   src: url("./font/futura\ medium\ condensed\ bt.ttf");
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -22,68 +23,53 @@
 .App {
   text-align: center;
   position: relative;
+  background-color: #f3f1f5;
 }
 
 .dress_description {
-  /* position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0; */
-  /* background: rgba(29, 106, 154, 0.72); */
-  /* color: #fff; */
+  padding: 10px;
+  position: absolute;
+  top: 50px;
+  right: 4.375rem;
+  font-size: 2em;
   visibility: hidden;
   opacity: 0;
-  font-size: 1rem;
-  /* transition effect. not necessary */
+  font-family: futura;
   transition: opacity 0.2s, visibility 0.2s;
   height: 100%;
   width: 100%;
   font-family: futura;
   padding: 0.51%;
 }
-
+.dress {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+.dress:hover {
+  opacity: 0.8;
+}
 .dress:hover .dress_description {
   visibility: visible;
   opacity: 1;
 }
 .dress-pic {
+  object-fit: cover;
   width: 100%;
-  height: auto;
-  display: block;
-  margin-bottom: 2rem;
-  padding: 10px;
-  background-color: #fff;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 2);
-  box-sizing: border-box;
-  border: 1px solid rgb(143, 130, 130);
-  shape-image-threshold: 0.7;
-  border-radius: 1%;
+  height: 100%;
 }
 
 .dresses {
-  /* display: grid; */
-  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
-  column-count: 4;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 1%;
-  grid-column-gap: 2rem;
-  grid-row-gap: 1rem;
-  column-gap: 17px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 25);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  background-color: #f3f1f5;
+  width: 80%;
+  margin: auto;
+  padding: 4%;
 }
-
-/* .price {
-  font-family: futura-pt, sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.8px;
-  line-height: 20px;
-  color: #d01345;
-  white-space: nowrap;
-  font-family: futura-m;
-} */
 
 .header {
   height: 6vh;
@@ -92,11 +78,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  vertical-align: center;
 }
 
 .header a {
   color: #fff;
-  /* margin: 10%; */
   padding: 1%;
   font-family: futura;
   font-size: 1.2em;
@@ -107,9 +93,8 @@
   background: url("https://i.ibb.co/SrK1Dd7/dress.jpg") center center/cover
     no-repeat;
   opacity: 0.9;
-  font-family: oswald, "arial narrow", sans-serif;
+  font-family: futura;
   height: 100vh;
-  /* background-color: black; */
 }
 @media screen and (max-width: 1024px) {
   .dresses {
@@ -135,14 +120,4 @@
   top: 200%;
   right: 40%;
   margin: auto;
-}
-
-.h1 {
-  background-color: transparent;
-  /* position: absolute; */
-  top: 45%;
-  left: 50%;
-  /* margin: auto; */
-  /* z-index: 1; */
-  text-align: center;
 }
