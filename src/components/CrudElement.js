@@ -1,14 +1,23 @@
 import { useState } from "react";
 
 import Input from "./Input";
-function CrudElement({ clickFunc }) {
+function CrudElement({ id, dress, clickFunc }) {
+  console.log({ dress });
   const [item, setItem] = useState({
-    size: "",
-    image: "",
-    color: "",
-    location: "",
-    price: "",
+    size: dress.size || "",
+    image: dress.image || "",
+    color: dress.color || "",
+    location: dress.location || "",
+    price: dress.price || "",
   });
+  // const [editItem,setEdititem] = useState({
+  //   size: dress.size,
+  //   image: "",
+  //   color: "",
+  //   location: "",
+  //   price: "",
+
+  // })
   const handleChange = (target) => {
     console.log(target);
     const { name, value } = target;
@@ -56,7 +65,7 @@ function CrudElement({ clickFunc }) {
           />
         </li>
       </ul>
-      <button onClick={clickFunc}>Submit</button>
+      <button onClick={() => clickFunc(id, item)}>Submit</button>
     </div>
   );
 }

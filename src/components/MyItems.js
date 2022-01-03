@@ -12,7 +12,13 @@ function MyItems() {
     location: "",
     price: "",
   });
+  const [showUpdate, setShowUpdate] = useState(false);
+  const [showDetails, setShowDetails] = useState(true);
 
+  const upComp = () => {
+    setShowDetails(!showDetails);
+    setShowUpdate(!showUpdate);
+  };
   const [myItems, setMyItems] = useState([
     {
       size: "m",
@@ -47,15 +53,22 @@ function MyItems() {
     return myItems.map((dress) => {
       return (
         <react.Fragment key={dress.id}>
-          <DressItem
-            size={dress.size}
-            color={dress.color}
-            location={dress.location}
-            price={dress.price}
-            image={dress.image}
-            id={dress.id}
-            deleteFunc={() => deleteDress(dress.id)}
-          />
+          {showDetails && (
+            <DressItem
+              size={dress.size}
+              color={dress.color}
+              location={dress.location}
+              price={dress.price}
+              image={dress.image}
+              id={dress.id}
+              deleteFunc={() => deleteDress(dress.id)}
+              updateFunc={() => updateFunc(dress.id)}
+            />
+          )}
+          <button onClick={upComp}>Update</button>
+          {showUpdate && (
+            <CrudElement id={dress.id} dress={dress} clickFunc={updateFunc} />
+          )}
         </react.Fragment>
       );
     });
@@ -72,6 +85,7 @@ function MyItems() {
       const { data } = await dressesApi.post("dresses", newDress);
 
       const items = [...myItems, data];
+
       setMyItems(items);
       setItem({
         size: "",
@@ -84,7 +98,15 @@ function MyItems() {
     } catch {}
   };
 
-  const updateItem = async () => {};
+  const updateFunc = async (id, newItem) => {
+    console.log(id);
+    console.log(newItem);
+    try {
+      const res = await dressesApi.put(`/dresses/${id}`, newItem);
+      console.log(res);
+    } catch (e) {}
+    console.log(newItem);
+  };
   return (
     <div className="myItems">
       <button onClick={addComp}>add a dress</button>

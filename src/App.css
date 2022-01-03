@@ -29,8 +29,8 @@
 .dress_description {
   padding: 10px;
   position: absolute;
-  top: 50px;
-  right: 4.375rem;
+  top: 3rem;
+  right: 1rem;
   font-size: 2em;
   visibility: hidden;
   opacity: 0;
@@ -62,7 +62,7 @@
 .dresses {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   background-color: #f3f1f5;
@@ -90,32 +90,32 @@
 }
 
 .home {
-  background: url("https://i.ibb.co/SrK1Dd7/dress.jpg") center center/cover
-    no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://i.ibb.co/SrK1Dd7/dress.jpg") center center/cover no-repeat;
   opacity: 0.9;
   font-family: futura;
   height: 100vh;
 }
 @media screen and (max-width: 1024px) {
   .dresses {
-    column-count: 3;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media screen and (max-width: 640px) {
   .dresses {
-    column-count: 2;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media screen and (max-width: 375px) {
   .dresses {
-    column-count: 1;
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 .dress-item {
   font-family: futura;
 }
 
-.Create {
+.CrudElement {
   position: absolute;
   top: 200%;
   right: 40%;
