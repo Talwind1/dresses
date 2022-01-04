@@ -6,6 +6,8 @@ import MyItems from "./components/MyItems";
 import Home from "./components/Home";
 import { useState, useEffect } from "react";
 import dressesApi from "./api";
+
+import Dress from "./components/Dress";
 // import Wishlist from './components/'
 
 function App() {
@@ -41,6 +43,7 @@ function App() {
             <Route path="/my-items">
               <MyItems items={dresses} />
             </Route>
+            <Route path="/dress/:id" exact component={Dress} />
           </>
         </Switch>
       </Router>

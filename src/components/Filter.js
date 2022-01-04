@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Dress from "./Dress.js";
 
 function Filter({ dresses, conditions }) {
   const [filteredData, setFilteredData] = useState(dresses);
@@ -35,13 +37,16 @@ function Filter({ dresses, conditions }) {
   const mapData = () => {
     return filteredData.map((dress) => {
       return (
-        <div key={dress.id} className="dress">
-          <img src={dress.image} alt="dress pic" className="dress-pic" />
-          <p className="dress_description">
-            Size {dress.size.toLowerCase()}, {dress.price}&#8362;{" "}
-            {dress.location}
-          </p>
-        </div>
+        <Link to={{ pathname: `/dress/${dress.id}` }}>
+          {" "}
+          <div key={dress.id} className="dress">
+            <img src={dress.image} alt="dress pic" className="dress-pic" />
+            <p className="dress_description">
+              Size {dress.size.toLowerCase()}, {dress.price}&#8362;{" "}
+              {dress.location}
+            </p>
+          </div>
+        </Link>
       );
     });
   };
