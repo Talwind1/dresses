@@ -32,8 +32,12 @@ function DressItem({
         <h4>Price: {price}</h4>
         <h4>Location:{location}</h4>
       </>
-      <button onClick={deleteFunc}>Delete</button>
-      <button onClick={upComp}>Update</button>
+      <button onClick={deleteFunc} className="btn">
+        Delete
+      </button>
+      <button onClick={upComp} className="btn">
+        Update
+      </button>
 
       {show && <CrudElement id={id} dress={dress} clickFunc={updateFunc} />}
     </div>

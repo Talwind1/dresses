@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Select from "./Select";
-function Sidebar() {
+function Sidebar({ setCons }) {
   const [vals, setVals] = useState({
     location: "",
     color: "",
@@ -11,6 +11,7 @@ function Sidebar() {
     const newValues = { ...vals };
     newValues[type] = value;
     setVals(newValues);
+    console.log(vals);
   };
   return (
     <div className="Sidebar">
@@ -19,12 +20,19 @@ function Sidebar() {
         options={["xs", "s", "m", "l", "xl"]}
         handleSelect={handleSelect}
       />
-      {/* <select id="color">
-        <option></option>
-      </select>
-      <select id="location">
-        <option></option>
-      </select> */}
+      <Select
+        type="color"
+        options={["pink", "white", "black", "light blue", "blue"]}
+        handleSelect={handleSelect}
+      />
+      <Select
+        type="location"
+        options={["Tel Aviv", "Haifa", "Holon", "Rishon"]}
+        handleSelect={handleSelect}
+      />
+      <button onClick={() => setCons(vals)} className="btn">
+        Find me a dress
+      </button>
     </div>
   );
 }

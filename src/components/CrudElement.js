@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Input from "./Input";
 function CrudElement({ id, dress, clickFunc }) {
-  console.log({ dress });
+  // console.log({ dress });
 
   const [item, setItem] = useState({
     size: dress ? dress.size : "",
@@ -13,11 +13,11 @@ function CrudElement({ id, dress, clickFunc }) {
   });
 
   const handleChange = (target) => {
-    console.log(target);
     const { name, value } = target;
     let newItem = { ...item };
     newItem[name] = value;
     setItem(newItem);
+    console.log(item);
   };
 
   return (
@@ -59,7 +59,9 @@ function CrudElement({ id, dress, clickFunc }) {
           />
         </li>
       </ul>
-      <button onClick={() => clickFunc(id, item)}>Submit</button>
+      <button onClick={() => clickFunc(id, item)} className="btn">
+        Submit
+      </button>
     </div>
   );
 }

@@ -6,19 +6,19 @@ function Filter({ dresses, conditions }) {
   useEffect(() => {
     const filterData = () => {
       let filtered = [...filteredData];
-      if (conditions.location.length > 0) {
+      if (conditions.location) {
         filtered = filtered.filter((dress) => {
-          return conditions.location.includes(dress.location);
+          return conditions.location === dress.location;
         });
       }
-      if (conditions.color.length > 0) {
+      if (conditions.color) {
         filtered = filtered.filter((dress) => {
-          return conditions.color.includes(dress.color);
+          return conditions.color === dress.color;
         });
       }
-      if (conditions.size.length > 0) {
+      if (conditions.size) {
         filtered = filtered.filter((dress) => {
-          return conditions.size.includes(dress.size);
+          return conditions.size === dress.size;
         });
       }
       if (conditions.price) {
@@ -38,7 +38,7 @@ function Filter({ dresses, conditions }) {
         <div key={dress.id} className="dress">
           <img src={dress.image} alt="dress pic" className="dress-pic" />
           <p className="dress_description">
-            size {dress.size.toUpperCase()}, {dress.price}&#8362;{" "}
+            Size {dress.size.toLowerCase()}, {dress.price}&#8362;{" "}
             {dress.location}
           </p>
         </div>
@@ -46,7 +46,7 @@ function Filter({ dresses, conditions }) {
     });
   };
 
-  return <div className="Filter">{mapData()}</div>;
+  return <div className="dresses">{mapData()}</div>;
 }
 
 export default Filter;

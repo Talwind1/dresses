@@ -9,8 +9,9 @@ import dressesApi from "./api";
 // import Wishlist from './components/'
 
 function App() {
+  const [loading, setLoading] = useState(false);
   const [dresses, setDresses] = useState(null);
-  const [loading, setLoading] = useState(null);
+
   useEffect(() => {
     setLoading(true);
     const fetching = async () => {
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <div className="App">
+      {loading && <h3>Loading...</h3>}
       <Router>
         <Header />
         <Switch>
