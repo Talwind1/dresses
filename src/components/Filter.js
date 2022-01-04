@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Dress from "./Dress.js";
-
-function Filter({ dresses, conditions }) {
+import { BsHeart } from "react-icons/bs";
+function Filter({ dresses, conditions, addToWishlist }) {
   const [filteredData, setFilteredData] = useState(dresses);
 
   useEffect(() => {
@@ -37,19 +37,30 @@ function Filter({ dresses, conditions }) {
   const mapData = () => {
     return filteredData.map((dress) => {
       return (
-        <Link
-          to={{ pathname: `/dress/${dress.id}` }}
-          style={{ textDecoration: "none" }}
+        <div
+          key={dress.id}
+          className="dress"
+          style={{
+            position: "relative",
+            backgroundColor: "transparent",
+            border: "none",
+          }}
         >
-          {" "}
-          <div key={dress.id} className="dress">
-            <img src={dress.image} alt="dress pic" className="dress-pic" />
+          <button className="like" onClick={() => addToWishlist(dress)}>
+            <BsHeart style={{ backgroundColor: "transperant" }} />
+          </button>
+          <img src={dress.image} alt="dress pic" className="dress-pic" />
+          <Link
+            to={{ pathname: `/dress/${dress.id}` }}
+            style={{ textDecoration: "none" }}
+            key={dress.id}
+          >
             <p className="dress_description">
               Size {dress.size.toLowerCase()}, {dress.price}&#8362;{" "}
               {dress.location}
             </p>
-          </div>
-        </Link>
+          </Link>
+        </div>
       );
     });
   };

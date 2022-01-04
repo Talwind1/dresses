@@ -4,14 +4,20 @@ import { useState } from "react";
 import Filter from "./Filter.js";
 import Sidebar from "./Sidebar.js";
 
-function Dresses({ dresses }) {
+function Dresses({ dresses, addToWishlist }) {
   const [conditions, setConditions] = useState({
     location: null,
     size: null,
     color: null,
     price: null,
   });
+  // const [wishlist, setWishlist] = useState([]);
+  // const addToWishlist = (dress) => {
+  //   const arr = [...wishlist, dress];
 
+  //   setWishlist(arr);
+  //   console.log(wishlist);
+  // };
   const newCons = (vals) => {
     setConditions(vals);
     console.log("conditions is", vals);
@@ -19,7 +25,13 @@ function Dresses({ dresses }) {
 
   //creacte state of conditions to filter props
   const display = () => {
-    return <Filter dresses={dresses} conditions={conditions} />;
+    return (
+      <Filter
+        dresses={dresses}
+        conditions={conditions}
+        addToWishlist={addToWishlist}
+      />
+    );
   };
 
   return (

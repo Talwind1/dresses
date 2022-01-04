@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dressesApi from "../api.js";
 import DressItem from "./DressItem.js";
 import CrudElement from "./CrudElement.js";
 import react from "react";
 
 function MyItems({ items }) {
+  const userId = 307840413;
   // const [userId, setUserId] = useState("");
   // const findUser = (value) => {
   //   setUserId(value);
@@ -21,9 +22,18 @@ function MyItems({ items }) {
   //   location: "",
   //   price: "",
   // });
+
   const [myItems, setMyItems] = useState(items);
   const [show, setShow] = useState(false);
   const [showAdd, setAddShow] = useState(false);
+
+  useEffect(() => {
+    const arr = items.filter((dress) => {
+      return dress.userId === userId;
+    });
+    setMyItems(arr);
+    console.log(arr);
+  }, []);
 
   const addComp = () => {
     setAddShow(!showAdd);
@@ -105,7 +115,7 @@ function MyItems({ items }) {
           Show Items
         </button>
       </div>
-      <div className="dresses-container">{show && mapItems}</div>
+      <div className="dresses-container">{show && mapItems()}</div>
     </div>
   );
 }

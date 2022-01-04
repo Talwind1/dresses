@@ -4,6 +4,7 @@ import Dresses from "./components/Dresses";
 import Header from "./components/Header";
 import MyItems from "./components/MyItems";
 import Home from "./components/Home";
+import Wishlist from "./components/Wishlist";
 import { useState, useEffect } from "react";
 import dressesApi from "./api";
 
@@ -29,6 +30,16 @@ function App() {
     fetching();
   }, []);
 
+  const [wishlist, setWishlist] = useState([]);
+  const addToWishlist = (dress) => {
+    if (!wishlist.includes(dress)) {
+      const arr = [...wishlist, dress];
+
+      setWishlist(arr);
+    }
+    console.log(wishlist);
+  };
+
   return (
     <div className="App">
       {loading && <h3>Loading...</h3>}
@@ -38,12 +49,17 @@ function App() {
           <>
             <Route exact path="/" component={Home} />
             <Route path="/dresses">
-              {dresses && <Dresses dresses={dresses} />}
+              {dresses && (
+                <Dresses dresses={dresses} addToWishlist={addToWishlist} />
+              )}
             </Route>
             <Route path="/my-items">
               <MyItems items={dresses} />
             </Route>
             <Route path="/dress/:id" exact component={Dress} />
+            <Route path="/wishlist">
+              <Wishlist wishlist={wishlist} />
+            </Route>
           </>
         </Switch>
       </Router>
