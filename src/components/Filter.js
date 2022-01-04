@@ -37,7 +37,10 @@ function Filter({ dresses, conditions }) {
   const mapData = () => {
     return filteredData.map((dress) => {
       return (
-        <Link to={{ pathname: `/dress/${dress.id}` }}>
+        <Link
+          to={{ pathname: `/dress/${dress.id}` }}
+          style={{ textDecoration: "none" }}
+        >
           {" "}
           <div key={dress.id} className="dress">
             <img src={dress.image} alt="dress pic" className="dress-pic" />
