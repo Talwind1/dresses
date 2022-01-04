@@ -14,6 +14,7 @@ function Home() {
   //   "514442198747 - km71bl7977f80el5gsih4mq7fu2kk6sq.apps.googleusercontent.com";
   return (
     <div className="home">
+      <button className="login btn">Log in</button>
       {/* <div>
         <GoogleLogin
           clientId={DRESSES_CLIENT_ID}

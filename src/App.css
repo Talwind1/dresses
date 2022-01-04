@@ -136,6 +136,12 @@
   opacity: 0.9;
   font-family: futura;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login {
+  opacity: 0.8;
 }
 @media screen and (max-width: 1024px) {
   .dresses {
