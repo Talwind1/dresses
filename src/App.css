@@ -24,16 +24,27 @@
   text-align: center;
   position: relative;
   background-color: #f3f1f5;
+  /* position: relative; */
 }
+/* .login {
+  position: absolute;
+  z-index: 1;
+} */
 
+.title {
+  display: flex;
+  flex-direction: row;
+}
+.logo {
+  background: url("https://i.ibb.co/5L1VfDh/logo.png") center center/cover
+    no-repeat;
+  width: 30%;
+  height: 100%;
+}
 .dress_description {
   padding: 10px;
-  position: absolute;
-  top: 3rem;
-  right: 1rem;
-  font-size: 2em;
-  visibility: hidden;
-  opacity: 0;
+  height: 10px;
+  font-size: 1.4em;
   font-family: futura;
   transition: opacity 0.2s, visibility 0.2s;
   height: 100%;
@@ -42,16 +53,11 @@
   padding: 0.51%;
 }
 .dress {
-  position: relative;
   width: 100%;
-  height: 500px;
+  height: 400px;
 }
 .dress:hover {
   opacity: 0.8;
-}
-.dress:hover .dress_description {
-  visibility: visible;
-  opacity: 1;
 }
 .dress-pic {
   object-fit: cover;
@@ -62,13 +68,12 @@
 .dresses {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
+  grid-column-gap: 40px;
+  grid-row-gap: 60px;
   background-color: #f3f1f5;
-  width: 80%;
+  width: 90%;
   margin: auto;
-  padding: 4%;
+  padding: 1%;
 }
 
 .header {
@@ -120,4 +125,14 @@
   top: 200%;
   right: 40%;
   margin: auto;
+}
+.add-element {
+  display: flex;
+  flex-direction: row;
+}
+.dresses-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 60px;
 }

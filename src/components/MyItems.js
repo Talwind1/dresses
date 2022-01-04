@@ -4,7 +4,16 @@ import DressItem from "./DressItem.js";
 import CrudElement from "./CrudElement.js";
 import react from "react";
 
-function MyItems() {
+function MyItems({ items }) {
+  const [userId, setUserId] = useState("");
+  const findUser = (value) => {
+    setUserId(value);
+  };
+  const onLogIn = () => {
+    const arr = items.filter((dress) => {
+      return dress.userId === userId;
+    });
+  };
   const [item, setItem] = useState({
     size: "",
     image: "",
@@ -12,23 +21,7 @@ function MyItems() {
     location: "",
     price: "",
   });
-  const [showUpdate, setShowUpdate] = useState(false);
-  const [showDetails, setShowDetails] = useState(true);
-
-  const upComp = () => {
-    setShowDetails(!showDetails);
-    setShowUpdate(!showUpdate);
-  };
-  const [myItems, setMyItems] = useState([
-    {
-      size: "m",
-      image: "https://i.ibb.co/g6t8FRF/50s-wedding-dres.jpg",
-      color: "black",
-      location: "Tel Aviv",
-      price: 55,
-      id: 1,
-    },
-  ]);
+  const [myItems, setMyItems] = useState(items);
   const [show, setShow] = useState(false);
   const [showAdd, setAddShow] = useState(false);
 
@@ -49,30 +42,24 @@ function MyItems() {
     setShow(!show);
   };
 
-  const mapItems = () => {
-    return myItems.map((dress) => {
-      return (
-        <react.Fragment key={dress.id}>
-          {showDetails && (
-            <DressItem
-              size={dress.size}
-              color={dress.color}
-              location={dress.location}
-              price={dress.price}
-              image={dress.image}
-              id={dress.id}
-              deleteFunc={() => deleteDress(dress.id)}
-              updateFunc={() => updateFunc(dress.id)}
-            />
-          )}
-          <button onClick={upComp}>Update</button>
-          {showUpdate && (
-            <CrudElement id={dress.id} dress={dress} clickFunc={updateFunc} />
-          )}
-        </react.Fragment>
-      );
-    });
-  };
+  const mapItems = myItems.map((dress) => {
+    return (
+      <react.Fragment key={dress.id}>
+        <DressItem
+          size={dress.size}
+          color={dress.color}
+          location={dress.location}
+          price={dress.price}
+          image={dress.image}
+          id={dress.id}
+          deleteFunc={() => deleteDress(dress.id)}
+          updateFunc={() => updateFunc(dress.id)}
+          dress={dress}
+        />
+      </react.Fragment>
+    );
+  });
+
   const createItem = async (size, location, price, color, image) => {
     try {
       const newDress = {
@@ -83,7 +70,7 @@ function MyItems() {
         image: item.image,
       };
       const { data } = await dressesApi.post("dresses", newDress);
-
+      const res = await dressesApi.post("cities", newDress.location);
       const items = [...myItems, data];
 
       setMyItems(items);
@@ -109,13 +96,18 @@ function MyItems() {
   };
   return (
     <div className="myItems">
-      <button onClick={addComp}>add a dress</button>
-      {showAdd && <CrudElement clickFunc={createItem} />}
-
-      <>
+      <button onClick={onLogIn}>Log in</button>
+      <input
+        type="text"
+        value={userId}
+        onChange={(e) => findUser(e.target.value)}
+      />
+      <div className="add-element">
+        {" "}
+        <button onClick={addComp}>add a dress</button>
         <button onClick={showItems}>Show Items</button>
-        <>{show && mapItems()}</>
-      </>
+      </div>
+      <div className="dresses-container">{show && mapItems}</div>
     </div>
   );
 }

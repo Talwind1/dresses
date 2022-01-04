@@ -3,21 +3,15 @@ import { useState } from "react";
 import Input from "./Input";
 function CrudElement({ id, dress, clickFunc }) {
   console.log({ dress });
-  const [item, setItem] = useState({
-    size: dress.size || "",
-    image: dress.image || "",
-    color: dress.color || "",
-    location: dress.location || "",
-    price: dress.price || "",
-  });
-  // const [editItem,setEdititem] = useState({
-  //   size: dress.size,
-  //   image: "",
-  //   color: "",
-  //   location: "",
-  //   price: "",
 
-  // })
+  const [item, setItem] = useState({
+    size: dress ? dress.size : "",
+    image: dress ? dress.image : "",
+    color: dress ? dress.color : "",
+    location: dress ? dress.location : "",
+    price: dress ? dress.price : "",
+  });
+
   const handleChange = (target) => {
     console.log(target);
     const { name, value } = target;
