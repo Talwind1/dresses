@@ -7,15 +7,21 @@ import Home from "./components/Home";
 import Wishlist from "./components/Wishlist";
 import { useState, useEffect } from "react";
 import dressesApi from "./api";
-
 import Dress from "./components/Dress";
-// import Wishlist from './components/'
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [dresses, setDresses] = useState(null);
+  const userId = 307840413;
+  const [wishlist, setWishlist] = useState(null);
+  const [userData, setUserData] = useState({
+    id: null,
+    wishlist: [],
+    items: [],
+  });
 
   useEffect(() => {
+    //get dresses data
     setLoading(true);
     const fetching = async () => {
       try {
@@ -30,7 +36,33 @@ function App() {
     fetching();
   }, []);
 
+  useEffect(() => {
+    //get user wishlist data
+    console.log("hiiiii");
+    setLoading(true);
+    const fetching = async () => {
+      try {
+        const { data } = await dressesApi.get(`users`);
+        setLoading(false);
+        console.log("user", data);
+        let obj = data.find((element) => {
+          return element.id === userId.toString();
+        });
+        // console.log(obj);
+        setUserData(obj);
+        // console.log(userData);
+        setWishlist(obj.wishlist);
+        wishlist && console.log(wishlist);
+        // outerFetch();
+      } catch (e) {
+        throw e.messege;
+      }
+    };
+    fetching();
+  }, []);
+
   const outerFetch = async () => {
+    //function for rendering the props
     console.log("its happen!");
     try {
       const { data } = await dressesApi.get("dresses");
@@ -41,17 +73,66 @@ function App() {
       throw e.messege;
     }
   };
-  const [wishlist, setWishlist] = useState([]);
-  const addToWishlist = (dress) => {
-    if (!wishlist.includes(dress)) {
-      const arr = [...wishlist, dress];
 
-      setWishlist(arr);
-    } else {
-      // wishlist.remove;
-    }
-    console.log(wishlist);
+  const addToWishlist = async (dress) => {
+    setLoading(true);
+    try {
+      const { data } = await dressesApi.get(`users/${userData.id}`);
+      setLoading(false);
+      console.log(data);
+      if (!data.wishlist.find((el) => el.id === dress.id)) {
+        let newList = wishlist.push(dress);
+        console.log(newList);
+        // let obj = data.find((element) => {
+        //   return element.id === userId;
+        // });
+      }
+    } catch (e) {}
   };
+
+  // if (wishlist) {
+  //   if (!wishlist.find((element) => element.id === dress.id)) {
+  //     let newData = userData;
+  //     newData.wishlist.push(dress);
+  //     console.log(newData);
+  //     const { data } = await dressesApi.put(`users/${userData.id}`);
+  //     setUserData(data);
+  //     setWishlist(data.wishlist);
+  //   }
+  // }
+
+  // try {
+  //   const { data } = await dressesApi.get("users");
+  //   setLoading(false);
+  //   console.log(data);
+  //   let obj = data.find((element) => {
+  //     return element.id === userId;
+  //   });
+  //   // if(obj.wishlist.inclu
+  //   if (obj.wishlist.find((element) => element.id === dress.id) === -1) {
+  //     const data = await dressesApi.post("users", dress);
+  //     console.log(data);
+  //   }
+
+  // setWishlist(obj.wishlist);
+
+  // wishlist && console.log(wishlist);
+  // outerFetch();
+  // } catch (e) {
+  //   throw e.messege;
+  // }
+  // }};
+  // const existInWishlist = ;
+
+  //   if (!wishlist.includes(dress)) {
+  //     const arr = [...wishlist, dress];
+
+  //     setWishlist(arr);
+  //   } else {
+  //     // wishlist.remove;
+  //   }
+  //   console.log(wishlist);
+  // };
 
   return (
     <div className="App">

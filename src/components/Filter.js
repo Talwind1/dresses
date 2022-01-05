@@ -10,17 +10,19 @@ function Filter({ dresses, conditions, addToWishlist }) {
       let filtered = [...filteredData];
       if (conditions.location) {
         filtered = filtered.filter((dress) => {
-          return conditions.location === dress.location;
+          return (
+            conditions.location.toLowerCase() === dress.location.toLowerCase()
+          );
         });
       }
       if (conditions.color) {
         filtered = filtered.filter((dress) => {
-          return conditions.color === dress.color;
+          return conditions.color.toLowerCase() === dress.colo.toLowerCase();
         });
       }
       if (conditions.size) {
         filtered = filtered.filter((dress) => {
-          return conditions.size === dress.size;
+          return conditions.size.toLowerCase() === dress.size.toLowerCase();
         });
       }
       if (conditions.price) {
@@ -46,8 +48,8 @@ function Filter({ dresses, conditions, addToWishlist }) {
           className="dress"
           style={{
             position: "relative",
-            backgroundColor: "transparent",
-            border: "none",
+            // backgroundColor: "transparent",
+            // border: "none",
           }}
         >
           <div

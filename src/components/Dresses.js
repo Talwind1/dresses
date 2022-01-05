@@ -42,6 +42,7 @@ function Dresses({ addToWishlist, outerFetch }) {
         dresses={dresses}
         conditions={conditions}
         addToWishlist={addToWishlist}
+        outerFetch={outerFetch}
       />
     );
   };

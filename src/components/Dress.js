@@ -2,7 +2,6 @@ import React from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import dressesApi from "../api";
-import Calendar from "react-calendar";
 
 const Dress = ({}) => {
   const history = useHistory();
@@ -35,8 +34,6 @@ const Dress = ({}) => {
           <p>size {dress.size}</p>
 
           <p>{dress.price}&#8362; </p>
-          <Calendar />
-          {/* <textarea style={{ width: "50%", heigth: "300%" }}></textarea> */}
         </div>
       </div>
     </div>

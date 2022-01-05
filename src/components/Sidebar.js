@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Select from "./Select";
 function Sidebar({ setCons }) {
   const [vals, setVals] = useState({
@@ -13,6 +13,10 @@ function Sidebar({ setCons }) {
     setVals(newValues);
     console.log(vals);
   };
+
+  // useEffect(() => {
+  //   outerFetch();
+  // }, [vals]);
   return (
     <div className="Sidebar">
       <Select
@@ -30,7 +34,12 @@ function Sidebar({ setCons }) {
         options={["Tel Aviv", "Haifa", "Holon", "Rishon"]}
         handleSelect={handleSelect}
       />
-      <button onClick={() => setCons(vals)} className="btn">
+      <button
+        onClick={() => {
+          setCons(vals);
+        }}
+        className="btn"
+      >
         Find me a dress
       </button>
     </div>

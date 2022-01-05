@@ -7,22 +7,6 @@ import react from "react";
 
 function MyItems({ items, outerFetch }) {
   const userId = 307840413;
-  // const [userId, setUserId] = useState("");
-  // const findUser = (value) => {
-  //   setUserId(value);
-  // };
-  // const onLogIn = () => {
-  //   const arr = items.filter((dress) => {
-  //     return dress.userId === userId;
-  //   });
-  // };
-  // const [item, setItem] = useState({
-  //   size: "",
-  //   image: "",
-  //   color: "",
-  //   location: "",
-  //   price: "",
-  // });
 
   const [myItems, setMyItems] = useState(items);
   const [show, setShow] = useState(false);

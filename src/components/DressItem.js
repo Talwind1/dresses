@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Update from "./Update.js";
-// import dressesApi from "../api.js";
 
 function DressItem({
   size,
