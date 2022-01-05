@@ -20,11 +20,10 @@ function Dresses({ addToWishlist, outerFetch }) {
       try {
         const { data } = await dressesApi.get("dresses");
         setLoading(false);
-
         setDresses(data);
         outerFetch();
       } catch (e) {
-        throw e.messege;
+        throw new e.messege();
       }
     };
     fetching();
@@ -49,6 +48,7 @@ function Dresses({ addToWishlist, outerFetch }) {
 
   return (
     <div>
+      {loading && <h2>Loading...</h2>}
       <Sidebar setCons={newCons} />
 
       {dresses && display()}

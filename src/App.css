@@ -36,6 +36,22 @@
   font-family: futura-m;
   font-size: 0.9em;
 }
+
+@media screen and (max-width: 1024px) {
+  .title {
+    font-size: 0.7em;
+  }
+}
+@media screen and (max-width: 640px) {
+  .title {
+    font-size: 0.5em;
+  }
+}
+@media screen and (max-width: 375px) {
+  .title {
+    font-size: 0.3em;
+  }
+}
 .logo {
   height: 100%;
   width: 10%;
@@ -71,7 +87,7 @@
   grid-column-gap: 40px;
   grid-row-gap: 60px;
   background-color: #f3f1f5;
-  width: 90%;
+  /* width: 90%; */
   margin: auto;
   padding: 1%;
 }
@@ -194,6 +210,7 @@
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
 .dress-item {
   font-family: futura;
   position: relative;

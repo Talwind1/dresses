@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import dressesApi from "../api.js";
 import DressItem from "./DressItem.js";
-import Update from "./Update.js";
+
 import Add from "./Add.js";
-import react from "react";
 
 function MyItems({ items, outerFetch }) {
   const userId = 307840413;

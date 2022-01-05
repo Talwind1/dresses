@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Select from "./Select";
 function Sidebar({ setCons }) {
   const [vals, setVals] = useState({

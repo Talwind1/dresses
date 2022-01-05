@@ -1,55 +1,38 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Dress from "./Dress.js";
+
 import { BiHeartCircle } from "react-icons/bi";
+
 function Filter({ dresses, conditions, addToWishlist }) {
-  const [filteredData, setFilteredData] = useState(dresses);
-  const [active, setActive] = useState(false);
-  useEffect(() => {
-    const filterData = () => {
-      let filtered = [...filteredData];
-      if (conditions.location) {
-        filtered = filtered.filter((dress) => {
-          return (
-            conditions.location.toLowerCase() === dress.location.toLowerCase()
-          );
-        });
-      }
-      if (conditions.color) {
-        filtered = filtered.filter((dress) => {
-          return conditions.color.toLowerCase() === dress.colo.toLowerCase();
-        });
-      }
-      if (conditions.size) {
-        filtered = filtered.filter((dress) => {
-          return conditions.size.toLowerCase() === dress.size.toLowerCase();
-        });
-      }
-      if (conditions.price) {
-        filtered = filtered.filter((dress) => {
-          return dress.price <= conditions.price;
-        });
-      }
+  const filterData = (arr) => {
+    let filtered = [...arr];
+    if (conditions.location) {
+      filtered = filtered.filter(
+        (dress) =>
+          conditions.location.toLowerCase() === dress.location.toLowerCase()
+      );
+    }
+    if (conditions.color) {
+      filtered = filtered.filter(
+        (dress) => conditions.color.toLowerCase() === dress.color.toLowerCase()
+      );
+    }
+    if (conditions.size) {
+      filtered = filtered.filter(
+        (dress) => conditions.size.toLowerCase() === dress.size.toLowerCase()
+      );
+    }
 
-      setFilteredData(filtered);
-    };
-    filterData();
-  }, [conditions]);
+    return filtered;
+  };
 
-  // const toggleActive = () => {
-  //   setActive(!active);
-  // };
-  // let color = active ? "black" : " #f3f1f5";
   const mapData = () => {
-    return filteredData.map((dress) => {
+    return filterData(dresses).map((dress) => {
       return (
         <div
           key={dress.id}
           className="dress"
           style={{
             position: "relative",
-            // backgroundColor: "transparent",
-            // border: "none",
           }}
         >
           <div
@@ -58,11 +41,7 @@ function Filter({ dresses, conditions, addToWishlist }) {
               addToWishlist(dress);
             }}
           >
-            <BiHeartCircle
-              style={{ backgroundColor: "transperant" }}
-              // style={{ color: color }}
-              // onClick={() => toggleActive()}
-            />
+            <BiHeartCircle style={{ backgroundColor: "transperant" }} />
           </div>
           <img src={dress.image} alt="dress pic" className="dress-pic" />
           <Link

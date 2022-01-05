@@ -13,12 +13,12 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [dresses, setDresses] = useState(null);
   const userId = 307840413;
-  const [wishlist, setWishlist] = useState(null);
-  const [userData, setUserData] = useState({
-    id: null,
-    wishlist: [],
-    items: [],
-  });
+  const [wishlist, setWishlist] = useState([]);
+  // const [userData, setUserData] = useState({
+  //   id: null,
+  //   wishlist: [],
+  //   items: [],
+  // });
 
   useEffect(() => {
     //get dresses data
@@ -36,30 +36,31 @@ function App() {
     fetching();
   }, []);
 
-  useEffect(() => {
-    //get user wishlist data
-    console.log("hiiiii");
-    setLoading(true);
-    const fetching = async () => {
-      try {
-        const { data } = await dressesApi.get(`users`);
-        setLoading(false);
-        console.log("user", data);
-        let obj = data.find((element) => {
-          return element.id === userId.toString();
-        });
-        // console.log(obj);
-        setUserData(obj);
-        // console.log(userData);
-        setWishlist(obj.wishlist);
-        wishlist && console.log(wishlist);
-        // outerFetch();
-      } catch (e) {
-        throw e.messege;
-      }
-    };
-    fetching();
-  }, []);
+  // useEffect(() => {
+  //   //get user wishlist data
+  //   console.log("hiiiii");
+  //   setLoading(true);
+  //   const fetching = async () => {
+  //     try {
+  //       const { data } = await dressesApi.get(`users`);
+  //       setLoading(false);
+  //       console.log("user", data);
+  //       let obj = data.find((element) => {
+  //         return element.id === userId.toString();
+  //       });
+  //       // console.log(obj);
+  //       setUserData(obj);
+  //       // console.log(userData);
+
+  //       setWishlist(obj.wishlist);
+  //       wishlist && console.log(wishlist);
+  //       // outerFetch();
+  //     } catch (e) {
+  //       throw e.messege;
+  //     }
+  //   };
+  //   fetching();
+  // }, []);
 
   const outerFetch = async () => {
     //function for rendering the props
@@ -75,19 +76,20 @@ function App() {
   };
 
   const addToWishlist = async (dress) => {
+    // console.log(dress);
     setLoading(true);
     try {
-      const { data } = await dressesApi.get(`users/${userData.id}`);
-      setLoading(false);
-      console.log(data);
-      if (!data.wishlist.find((el) => el.id === dress.id)) {
-        let newList = wishlist.push(dress);
-        console.log(newList);
-        // let obj = data.find((element) => {
-        //   return element.id === userId;
-        // });
+      if (!wishlist.find((el) => el.id === dress.id)) {
+        const { data } = await dressesApi.post("/wishlist", dress);
+        setLoading(false);
+        let copy = [...wishlist];
+        copy.push(data);
+        console.log(copy);
+        setWishlist(copy);
       }
-    } catch (e) {}
+    } catch (e) {
+      throw console.error(e.messege);
+    }
   };
 
   // if (wishlist) {
