@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Dress from "./Dress.js";
-import { BsHeart } from "react-icons/bs";
+import { BiHeartCircle } from "react-icons/bi";
 function Filter({ dresses, conditions, addToWishlist }) {
   const [filteredData, setFilteredData] = useState(dresses);
-
+  const [active, setActive] = useState(false);
   useEffect(() => {
     const filterData = () => {
       let filtered = [...filteredData];
@@ -34,6 +34,10 @@ function Filter({ dresses, conditions, addToWishlist }) {
     filterData();
   }, [conditions]);
 
+  // const toggleActive = () => {
+  //   setActive(!active);
+  // };
+  // let color = active ? "black" : " #f3f1f5";
   const mapData = () => {
     return filteredData.map((dress) => {
       return (
@@ -46,9 +50,18 @@ function Filter({ dresses, conditions, addToWishlist }) {
             border: "none",
           }}
         >
-          <button className="like" onClick={() => addToWishlist(dress)}>
-            <BsHeart style={{ backgroundColor: "transperant" }} />
-          </button>
+          <div
+            className="like"
+            onClick={(e) => {
+              addToWishlist(dress);
+            }}
+          >
+            <BiHeartCircle
+              style={{ backgroundColor: "transperant" }}
+              // style={{ color: color }}
+              // onClick={() => toggleActive()}
+            />
+          </div>
           <img src={dress.image} alt="dress pic" className="dress-pic" />
           <Link
             to={{ pathname: `/dress/${dress.id}` }}

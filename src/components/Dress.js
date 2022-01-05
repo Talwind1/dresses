@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import dressesApi from "../api";
+import Calendar from "react-calendar";
 
 const Dress = ({}) => {
   const history = useHistory();
@@ -12,7 +13,6 @@ const Dress = ({}) => {
       try {
         const { data } = await dressesApi.get(`/dresses/${id}`);
 
-        console.log(data);
         setDress(data);
       } catch (e) {
         throw e.messege;
@@ -22,14 +22,23 @@ const Dress = ({}) => {
   }, []);
 
   return (
-    <div>
+    <div className="dress-page">
       <button className="btn" onClick={() => history.goBack()}>
         Back
       </button>
-      <h2>{dress.location}</h2>
-      <h2>{dress.size}</h2>
-      <h2>{dress.price}</h2>
-      <img src={dress.image} alt="dress" style={{ width: "30rem" }} />
+      <div className="dress-row">
+        <div className="dress-pic-page">
+          <img src={dress.image} alt="dress" />
+        </div>
+        <div className="dress-details-page">
+          <p>Locate in {dress.location}</p>
+          <p>size {dress.size}</p>
+
+          <p>{dress.price}&#8362; </p>
+          <Calendar />
+          {/* <textarea style={{ width: "50%", heigth: "300%" }}></textarea> */}
+        </div>
+      </div>
     </div>
   );
 };

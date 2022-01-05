@@ -28,12 +28,7 @@
   text-align: center;
   position: relative;
   background-color: #f3f1f5;
-  /* position: relative; */
 }
-/* .login {
-  position: absolute;
-  z-index: 1;
-} */
 
 .title {
   display: flex;
@@ -130,12 +125,32 @@
   right: 0;
   top: 10px;
   bottom: 0;
-  background-color: transperant;
-  border: none;
-  height: 8%;
+  color: #f3f1f5;
+  height: 12%;
   width: 15%;
-  font-size: 2.3em;
+  font-size: 3em;
+  margin: 1%;
 }
+.liked {
+  position: absolute;
+  left: 1.875rem;
+  right: 0;
+  top: 1rem;
+  bottom: 0;
+  text-shadow: #7f7c82;
+  color: #f3f1f5;
+  /* height: 12%; */
+  font-size: 2em;
+}
+.like:hover {
+  color: black;
+}
+.dress-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .btn:hover {
   /* color: #bfa2db; */
   text-shadow: 1px 1px #bfa2db;
@@ -193,4 +208,46 @@
 .my-items {
   background-color: #f3f1f5;
   height: 100vh;
+}
+
+.dress-page {
+  display: flex;
+  flex-direction: column;
+  margin: 4%;
+  background-color: #f3f1f5;
+  width: 100vw;
+  height: 100vh;
+}
+
+.dress-details-page p {
+  font-family: futura;
+  padding: 2%;
+  margin: 2%;
+  width: 50%;
+  font-size: 1.6em;
+}
+
+.dress-pic-page img {
+  height: 60%;
+  margin: 4%;
+  padding: 2.5%;
+}
+
+.dress-details-page {
+  /* margin: 2%; */
+  width: 30%;
+  padding: 1% 5%;
+  text-align: left;
+}
+.react-calendar__month-view__weekdays {
+  color: gray;
+}
+.react-calendar__navigation button {
+  font-size: 1em;
+}
+
+.wishlist {
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: ;
 }
