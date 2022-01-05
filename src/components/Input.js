@@ -1,4 +1,4 @@
-function Input({ type, handleChange, value, inputRef }) {
+function Input({ type, handleChange, value }) {
   return (
     <input
       className="input"
@@ -8,7 +8,6 @@ function Input({ type, handleChange, value, inputRef }) {
       placeholder={type}
       value={value}
       id={type}
-      ref={inputRef}
       className="itn"
     />
   );

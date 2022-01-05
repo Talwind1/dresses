@@ -12,13 +12,9 @@ import Dress from "./components/Dress";
 function App() {
   const [loading, setLoading] = useState(false);
   const [dresses, setDresses] = useState(null);
-  const userId = 307840413;
+  // const userId = 307840413;
   const [wishlist, setWishlist] = useState([]);
-  // const [userData, setUserData] = useState({
-  //   id: null,
-  //   wishlist: [],
-  //   items: [],
-  // });
+  const [userId, setUserId] = useState();
 
   useEffect(() => {
     //get dresses data
@@ -27,7 +23,6 @@ function App() {
       try {
         const { data } = await dressesApi.get("dresses");
         setLoading(false);
-
         setDresses(data);
       } catch (e) {
         throw e.messege;
@@ -35,32 +30,6 @@ function App() {
     };
     fetching();
   }, []);
-
-  // useEffect(() => {
-  //   //get user wishlist data
-  //   console.log("hiiiii");
-  //   setLoading(true);
-  //   const fetching = async () => {
-  //     try {
-  //       const { data } = await dressesApi.get(`users`);
-  //       setLoading(false);
-  //       console.log("user", data);
-  //       let obj = data.find((element) => {
-  //         return element.id === userId.toString();
-  //       });
-  //       // console.log(obj);
-  //       setUserData(obj);
-  //       // console.log(userData);
-
-  //       setWishlist(obj.wishlist);
-  //       wishlist && console.log(wishlist);
-  //       // outerFetch();
-  //     } catch (e) {
-  //       throw e.messege;
-  //     }
-  //   };
-  //   fetching();
-  // }, []);
 
   const outerFetch = async () => {
     //function for rendering the props
@@ -76,7 +45,6 @@ function App() {
   };
 
   const addToWishlist = async (dress) => {
-    // console.log(dress);
     setLoading(true);
     try {
       if (!wishlist.find((el) => el.id === dress.id)) {
@@ -91,50 +59,9 @@ function App() {
       throw console.error(e.messege);
     }
   };
-
-  // if (wishlist) {
-  //   if (!wishlist.find((element) => element.id === dress.id)) {
-  //     let newData = userData;
-  //     newData.wishlist.push(dress);
-  //     console.log(newData);
-  //     const { data } = await dressesApi.put(`users/${userData.id}`);
-  //     setUserData(data);
-  //     setWishlist(data.wishlist);
-  //   }
-  // }
-
-  // try {
-  //   const { data } = await dressesApi.get("users");
-  //   setLoading(false);
-  //   console.log(data);
-  //   let obj = data.find((element) => {
-  //     return element.id === userId;
-  //   });
-  //   // if(obj.wishlist.inclu
-  //   if (obj.wishlist.find((element) => element.id === dress.id) === -1) {
-  //     const data = await dressesApi.post("users", dress);
-  //     console.log(data);
-  //   }
-
-  // setWishlist(obj.wishlist);
-
-  // wishlist && console.log(wishlist);
-  // outerFetch();
-  // } catch (e) {
-  //   throw e.messege;
-  // }
-  // }};
-  // const existInWishlist = ;
-
-  //   if (!wishlist.includes(dress)) {
-  //     const arr = [...wishlist, dress];
-
-  //     setWishlist(arr);
-  //   } else {
-  //     // wishlist.remove;
-  //   }
-  //   console.log(wishlist);
-  // };
+  const setUser = (userId) => {
+    setUserId(userId);
+  };
 
   return (
     <div className="App">
@@ -143,7 +70,9 @@ function App() {
         <Header />
         <Switch>
           <>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/">
+              <Home setUser={setUser} />
+            </Route>
             <Route path="/dresses">
               {dresses && (
                 <Dresses
@@ -153,7 +82,11 @@ function App() {
               )}
             </Route>
             <Route path="/my-items">
-              <MyItems items={dresses} outerFetch={outerFetch} />
+              <MyItems
+                items={dresses}
+                outerFetch={outerFetch}
+                userId={userId}
+              />
             </Route>
             <Route path="/dress/:id" exact component={Dress} />
             <Route path="/wishlist">
