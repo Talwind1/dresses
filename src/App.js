@@ -30,12 +30,25 @@ function App() {
     fetching();
   }, []);
 
+  const outerFetch = async () => {
+    console.log("its happen!");
+    try {
+      const { data } = await dressesApi.get("dresses");
+      setLoading(false);
+
+      setDresses(data);
+    } catch (e) {
+      throw e.messege;
+    }
+  };
   const [wishlist, setWishlist] = useState([]);
   const addToWishlist = (dress) => {
     if (!wishlist.includes(dress)) {
       const arr = [...wishlist, dress];
 
       setWishlist(arr);
+    } else {
+      // wishlist.remove;
     }
     console.log(wishlist);
   };
@@ -50,11 +63,14 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path="/dresses">
               {dresses && (
-                <Dresses dresses={dresses} addToWishlist={addToWishlist} />
+                <Dresses
+                  addToWishlist={addToWishlist}
+                  outerFetch={outerFetch}
+                />
               )}
             </Route>
             <Route path="/my-items">
-              <MyItems items={dresses} />
+              <MyItems items={dresses} outerFetch={outerFetch} />
             </Route>
             <Route path="/dress/:id" exact component={Dress} />
             <Route path="/wishlist">

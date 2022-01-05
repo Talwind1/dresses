@@ -1,23 +1,35 @@
 // import axios from "axios";
-import { useState } from "react";
-// import dressesApi from "../api.js";
+import { useState, useEffect } from "react";
+import dressesApi from "../api.js";
 import Filter from "./Filter.js";
 import Sidebar from "./Sidebar.js";
 
-function Dresses({ dresses, addToWishlist }) {
+function Dresses({ addToWishlist, outerFetch }) {
   const [conditions, setConditions] = useState({
     location: null,
     size: null,
     color: null,
     price: null,
   });
-  // const [wishlist, setWishlist] = useState([]);
-  // const addToWishlist = (dress) => {
-  //   const arr = [...wishlist, dress];
+  const [dresses, setDresses] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  //   setWishlist(arr);
-  //   console.log(wishlist);
-  // };
+  useEffect(() => {
+    setLoading(true);
+    const fetching = async () => {
+      try {
+        const { data } = await dressesApi.get("dresses");
+        setLoading(false);
+
+        setDresses(data);
+        outerFetch();
+      } catch (e) {
+        throw e.messege;
+      }
+    };
+    fetching();
+  }, []);
+
   const newCons = (vals) => {
     setConditions(vals);
     console.log("conditions is", vals);

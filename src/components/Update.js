@@ -1,15 +1,13 @@
 import { useState } from "react";
-
 import Input from "./Input";
-function CrudElement({ id, dress, clickFunc }) {
-  // console.log({ dress });
-
+function Update({ id, dress, clickFunc, userId }) {
   const [item, setItem] = useState({
-    size: dress ? dress.size : "",
-    image: dress ? dress.image : "",
-    color: dress ? dress.color : "",
-    location: dress ? dress.location : "",
-    price: dress ? dress.price : "",
+    size: dress.size,
+    image: dress.image,
+    color: dress.color,
+    location: dress.location,
+    price: dress.price,
+    userId: userId,
   });
 
   const handleChange = (target) => {
@@ -21,7 +19,7 @@ function CrudElement({ id, dress, clickFunc }) {
   };
 
   return (
-    <div className="CrudElement">
+    <div className="update-element">
       <ul style={{ listStyle: "none" }}>
         <li>
           <Input
@@ -65,4 +63,4 @@ function CrudElement({ id, dress, clickFunc }) {
     </div>
   );
 }
-export default CrudElement;
+export default Update;

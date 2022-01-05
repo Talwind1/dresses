@@ -1,6 +1,6 @@
 import { useState } from "react";
-import CrudElement from "./CrudElement";
-import dressesApi from "../api.js";
+import Update from "./Update.js";
+// import dressesApi from "../api.js";
 
 function DressItem({
   size,
@@ -39,7 +39,14 @@ function DressItem({
         Update
       </button>
 
-      {show && <CrudElement id={id} dress={dress} clickFunc={updateFunc} />}
+      {show && (
+        <Update
+          id={id}
+          dress={dress}
+          clickFunc={updateFunc}
+          className="update-Element"
+        />
+      )}
     </div>
   );
 }

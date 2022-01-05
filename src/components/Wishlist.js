@@ -2,11 +2,6 @@ import { React, useEffect, useState } from "react";
 import { BiHeartCircle } from "react-icons/bi";
 import { BsHeartFill } from "react-icons/bs";
 const Wishlist = ({ wishlist }) => {
-  // useEffect(() => {
-  //   console.log(wishlist);
-  // }, []);
-
-  // const [list, setList] = useState(wishlist);
   const mapWishlist = () => {
     return (
       <div className="dresses" style={{ padding: "3%" }}>
@@ -24,7 +19,10 @@ const Wishlist = ({ wishlist }) => {
                   style={{ position: "absolute" }}
                 />
               </div>
-              <img src={dress.image} style={{ height: "30rem" }} />
+              <img
+                src={dress.image}
+                style={{ height: "30rem", width: "18rem" }}
+              />
 
               <p className="dress_description">
                 Size {dress.size.toLowerCase()}, {dress.price}&#8362;{" "}

@@ -9,6 +9,7 @@ function Input({ type, handleChange, value, inputRef }) {
       value={value}
       id={type}
       ref={inputRef}
+      className="itn"
     />
   );
 }

@@ -119,6 +119,16 @@
   font-size: 1.3rem;
   /* padding: 2%; */
 }
+
+.itn {
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  font-family: futura;
+  font-size: 1.3rem;
+  margin: 2%;
+  width: 150%;
+}
 .like {
   position: absolute;
   left: 10px;
@@ -186,17 +196,25 @@
 }
 .dress-item {
   font-family: futura;
+  position: relative;
+  margin: 2%;
+  height: 100%;
+}
+.dress-item img {
+  height: 100%;
+}
+.update-Element {
+  position: absolute;
+  /* top: 200%; */
+  /* right: 40%; */
+  margin: auto;
+  width: 200%;
 }
 
-.CrudElement {
-  position: absolute;
-  top: 200%;
-  right: 40%;
-  margin: auto;
-}
 .add-element {
   display: flex;
   flex-direction: row;
+  margin: 2%;
 }
 .dresses-container {
   display: grid;
@@ -249,5 +267,5 @@
 .wishlist {
   width: 100vw;
   height: 100vh;
-  grid-template-columns: ;
+  /* grid-template-columns: ; */
 }

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import dressesApi from "../api.js";
 import DressItem from "./DressItem.js";
-import CrudElement from "./CrudElement.js";
+import Update from "./Update.js";
+import Add from "./Add.js";
 import react from "react";
 
-function MyItems({ items }) {
+function MyItems({ items, outerFetch }) {
   const userId = 307840413;
   // const [userId, setUserId] = useState("");
   // const findUser = (value) => {
@@ -28,11 +29,13 @@ function MyItems({ items }) {
   const [showAdd, setAddShow] = useState(false);
 
   useEffect(() => {
-    const arr = items.filter((dress) => {
-      return dress.userId === userId;
-    });
-    setMyItems(arr);
-    console.log(arr);
+    if (items) {
+      const arr = items.filter((dress) => {
+        return dress.userId === userId;
+      });
+      console.log(arr);
+      setMyItems(arr);
+    }
   }, []);
 
   const addComp = () => {
@@ -50,11 +53,12 @@ function MyItems({ items }) {
         price: item.price,
         color: item.color,
         image: item.image,
+        userId: userId,
       };
       const { data } = await dressesApi.post("dresses", newDress);
-      const res = await dressesApi.post("cities", newDress.location);
       const items = [...myItems, data];
       setMyItems(items);
+      console.log(myItems);
     } catch {}
   };
 
@@ -64,6 +68,7 @@ function MyItems({ items }) {
     try {
       const res = await dressesApi.put(`/dresses/${id}`, newItem);
       console.log(res);
+      outerFetch();
     } catch (e) {}
     console.log(newItem);
   };
@@ -75,13 +80,14 @@ function MyItems({ items }) {
         return item.id !== id;
       });
       setMyItems(items);
+      outerFetch();
     } catch (e) {}
   };
 
   const mapItems = () => {
     return myItems.map((dress) => {
       return (
-        <react.Fragment key={dress.id}>
+        <div key={dress.id} className="dress-item">
           <DressItem
             size={dress.size}
             color={dress.color}
@@ -90,32 +96,29 @@ function MyItems({ items }) {
             image={dress.image}
             id={dress.id}
             deleteFunc={() => deleteDress(dress.id)}
-            updateFunc={() => updateFunc(dress.id)}
+            updateFunc={updateFunc}
             dress={dress}
           />
-        </react.Fragment>
+        </div>
       );
     });
   };
   return (
     <div className="my-items">
-      {/* <button onClick={onLogIn}>Log in</button> */}
-      {/* <input
-        type="text"
-        value={userId}
-        onChange={(e) => findUser(e.target.value)}
-      /> */}
-      <div className="add-element">
-        {" "}
+      <div className="buttons">
         <button onClick={addComp} className="btn">
           add a dress
         </button>
-        {showAdd && <CrudElement clickFunc={createItem} />}
         <button onClick={showItems} className="btn">
           Show Items
         </button>
       </div>
-      <div className="dresses-container">{show && mapItems()}</div>
+      <div className="add-element">
+        {" "}
+        {showAdd && <Add clickFunc={createItem} userId={userId} />}
+      </div>
+
+      <div className="dresses-container">{show && myItems && mapItems()}</div>
     </div>
   );
 }
