@@ -53,7 +53,9 @@ function Update({ id, dress, clickFunc, userId }) {
           <Input
             type="color"
             value={item.color}
-            handleChange={(e) => handleChange(e.target)}
+            handleChange={(e) => {
+              handleChange(e.target);
+            }}
           />
         </li>
       </ul>

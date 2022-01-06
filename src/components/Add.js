@@ -1,9 +1,7 @@
 import { useState } from "react";
 
 import Input from "./Input";
-function Add({ id, dress, clickFunc, userId }) {
-  // console.log({ dress });
-
+function Add({ id, clickFunc, userId }) {
   const [item, setItem] = useState({
     size: "",
     image: "",
