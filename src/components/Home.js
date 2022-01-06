@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 function Home({ setUser }) {
   const [userId, setUserId] = useState();
 
@@ -16,14 +16,16 @@ function Home({ setUser }) {
         style={{ width: "200px" }}
         className="itn"
       />
-      <button
-        className="login btn"
-        onClick={() => {
-          setUser(userId);
-        }}
-      >
-        Log in
-      </button>
+      <Link to="/dresses">
+        <button
+          className="login btn"
+          onClick={() => {
+            setUser(userId);
+          }}
+        >
+          Log in
+        </button>
+      </Link>
     </div>
   );
 }

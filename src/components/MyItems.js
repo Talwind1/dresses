@@ -4,8 +4,8 @@ import DressItem from "./DressItem.js";
 
 import Add from "./Add.js";
 
-function MyItems({ items, outerFetch, userId }) {
-  //  const userId = 307840413;
+function MyItems({ items, outerFetch }) {
+  const userId = 307840413;
 
   const [myItems, setMyItems] = useState(items);
   const [show, setShow] = useState(false);

@@ -75,7 +75,7 @@ function Add({ id, dress, clickFunc, userId }) {
           setMsg(true);
           setTimeout(() => {
             setMsg(false);
-          }, 1100);
+          }, 1500);
         }}
         className="btn"
       >

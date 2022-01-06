@@ -14,9 +14,6 @@ function Sidebar({ setCons }) {
     console.log(vals);
   };
 
-  // useEffect(() => {
-  //   outerFetch();
-  // }, [vals]);
   return (
     <div className="Sidebar">
       <Select
@@ -26,7 +23,18 @@ function Sidebar({ setCons }) {
       />
       <Select
         type="color"
-        options={["pink", "white", "black", "light blue", "blue"]}
+        options={[
+          "pink",
+          "white",
+          "black",
+          "light blue",
+          "blue",
+          "orange",
+          "silver",
+          "purple",
+          "gold",
+          "green",
+        ]}
         handleSelect={handleSelect}
       />
       <Select

@@ -48,10 +48,10 @@ function Dresses({ addToWishlist, outerFetch }) {
 
   return (
     <div>
-      {loading && <h2>Loading...</h2>}
       <Sidebar setCons={newCons} />
 
       {dresses && display()}
+      {loading && <h2>Loading...</h2>}
     </div>
   );
 }
