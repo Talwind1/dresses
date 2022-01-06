@@ -27,7 +27,7 @@ function Dresses({ addToWishlist, outerFetch }) {
       }
     };
     fetching();
-  }, []);
+  }, [outerFetch]);
 
   const newCons = (vals) => {
     setConditions(vals);

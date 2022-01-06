@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import MyItems from "./components/MyItems";
 import Home from "./components/Home";
 import Wishlist from "./components/Wishlist";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import dressesApi from "./api";
 import Dress from "./components/Dress";
 
@@ -30,8 +30,7 @@ function App() {
     };
     fetching();
   }, []);
-
-  const outerFetch = async () => {
+  const outerFetch = useCallback(async () => {
     //function for rendering the props
     console.log("its happen!");
     try {
@@ -42,7 +41,7 @@ function App() {
     } catch (e) {
       throw e.messege;
     }
-  };
+  }, []);
 
   const addToWishlist = async (dress) => {
     setLoading(true);
