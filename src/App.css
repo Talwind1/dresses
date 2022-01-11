@@ -82,6 +82,7 @@
 
 .dresses {
   height: 100vh;
+  margin: 1%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 40px;
@@ -184,7 +185,8 @@
 
 .home {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://i.ibb.co/SrK1Dd7/dress.jpg") center center/cover no-repeat;
+    url("https://images.shift.how/BorrowClothesSpecialOccasions_becca-mchaffie_Desktop.jpg")
+      center center/cover no-repeat;
   opacity: 0.9;
   font-family: futura;
   height: 100vh;

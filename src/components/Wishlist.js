@@ -22,7 +22,7 @@ const Wishlist = ({ wishlist }) => {
               </div>
               <img
                 src={dress.image}
-                style={{ height: "30rem", width: "18rem" }}
+                style={{ height: "30rem", width: "18rem", objectFit: "cover" }}
                 alt=""
               />
 
